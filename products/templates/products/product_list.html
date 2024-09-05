@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products List</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Products List</h1>
+    <p> average: {{info.price__avg}} <p>
+    <p> Number of Products : {{product_toll}}<p>
+    <p> Max Price : {{info.price__max}}<p>
+    <p> Min Price : {{info.price__min}}<p>
+    <p> max ratings : {{info.ratings__max}}<p>
+    <table>
+        <thead>
+            <tr>
+                <th>slug</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Is Active</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in context %}
+            <tr>
+                <td><a href="{% url 'ViewProductDetails' product.slug %}">{{ product.slug }}</a></td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description }} </td>
+                <td>{{ product.is_active }}</td>
+                <td>{{ product.ratings }}</td>  </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

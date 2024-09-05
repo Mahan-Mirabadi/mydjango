@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_page %}
+    Contact Us
+{% endblock %}
+
+{% block head_ref %}
+    <link rel="stylesheet" href="{% static 'customer/style.css' %}">
+{% endblock %}
+
+{% block content_page %}
+    <h1>Contact Us</h1>
+    <p>Created by Mahan</p>
+    <p>Phone number: 09211669612</p>
+
+    <form action="{% url 'contact_us:contact_us' %}" method="post" novalidate>
+        {% csrf_token %}
+        {{ form_register.as_p }}
+        <br>
+        <button type="submit">Send</button>
+    </form>
+{% endblock %}
